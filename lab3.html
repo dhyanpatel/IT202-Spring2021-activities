@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    fetch("https://api.nasa.gov/planetary/apod?api_key=mN056RLkW6XluSOHSW4xEUhBS4BQIn0JXyCHD3Cd")
+        .then(response => response.json())
+        .then(data => {
+            title = document.createElement('h1')
+            hdurl = document.createElement('img')
+            explanation = document.createElement('p')
+            title.innerText = data.title
+            hdurl.src = data.hdurl
+            explanation.innerText = data.explanation
+            document.body.appendChild(title)
+            document.body.appendChild(hdurl)
+            document.body.appendChild(explanation)
+        })
+</script>
+</body>
+</html>
