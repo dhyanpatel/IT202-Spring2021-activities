@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+</head>
+<body>
+<h1>Form Basics</h1>
+
+
+<p id="uptonSinclairQuote">
+    It is difficult to get a man to understand something, when his salary depends upon his not understanding it! --
+    Upton Sinclair</p>
+
+<form id="form1" name="form1">
+    <label for="text1">Input for Text 1</label>
+    <input type="text" id="text1" name="text1"/>
+    <br>
+    <label>
+        Radio Red
+        <input type="radio" value="red" name="radio1"/>
+    </label>
+    <br>
+    <label>
+        Radio Green
+        <input type="radio" value="green" name="radio1"/>
+    </label>
+    <br>
+    <label>
+        Radio Blue
+        <input type="radio" value="blue" name="radio1"/>
+    </label>
+    <br>
+    <label for="select1">Day of Week:</label>
+    <select id="select1" name="select1">
+        <option></option>
+        <option>Mon</option>
+        <option>Wed</option>
+        <option>Fri</option>
+    </select>
+    <br>
+    <label for="textarea1">Feedback</label>
+    <textarea id="textarea1" name="textarea1"
+              placeholder="Please provide any additional feedback"></textarea>
+</form>
+
+<script>
+    document.querySelector("#text1").value = "Dhyan Patel"
+    document.querySelector("[value='green']").checked = true
+    document.querySelector("[id='textarea1']").value = document.querySelector("[id='uptonSinclairQuote']").innerText
+    document.querySelector("[id='select1']").addEventListener("change", ev => {
+        console.log(ev.target.value)
+    })
+</script>
+</body>
+</html>
