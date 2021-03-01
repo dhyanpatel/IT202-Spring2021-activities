@@ -1,0 +1,6 @@
+canvas {
+    height:500vh;
+    width: 500vw;
+    position: absolute;
+    background-color: #323232;
+}
