@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 10</title>
+</head>
+<body>
+<textarea id="text" rows="8" cols="50"></textarea>
+<br>
+<label for="languages">Language:</label>
+<br>
+<select id="languages">
+    <option value="none">Select a Language:</option>
+</select>
+<br>
+<button id="speak" disabled>Speak</button>
+
+<script>
+    let voices;
+    let speak = document.querySelector("#speak")
+    let language = document.querySelector("#languages")
+    let userInput = document.querySelector("#text")
+
+    function populateLanguages() {
+        voices = speechSynthesis.getVoices()
+        for(let i = 0; i < voices.length; i++){
+            let option = document.createElement('option')
+            option.textContent = voices[i].name + ' (' + voices[i].lang + ')'
+            option.value = i;
+            language.appendChild(option)
+        }
+    }
+
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = populateLanguages
+    }
+    language.addEventListener('change', (event) => {
+        speak.disabled = event.target.value === 'none';
+    })
+    speak.addEventListener("click", () => {
+        let utterance = new SpeechSynthesisUtterance(userInput.value)
+        utterance.voice = voices[language.value]
+        speechSynthesis.speak(utterance)
+    })
+</script>
+
+</body>
+</html>
