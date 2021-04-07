@@ -1,13 +1,58 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>Dhyan Patel Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body>
-<ul>
-    <li><a href="css_basics.html">CSS Basics</a></li>
-    <li><a href="bootstrap_rwd_basics.html">Bootstrap RWD Basics</a></li>
-    <li><a href="dom_manipulation_basics.html">DOM Manipulation Basics</a></li>
-    <li><a href="event_handler_basics.html">Event Handler Basics</a></li>
-    <li><a href="lab3.html">Lab 3</a> </li>
-</ul>
+<body class="bg-dark ">
+<div class="text-white" style="text-align: center">
+    <h1>Dhyan Patel</h1>
+    <h3>dpate254@uic.edu</h3>
+    <h5>Computer Science @ UIC</h5>
+    <h2 class="mt-5">My IT 202 Projects</h2>
+</div>
+<div class="container">
+    <div id="projectCards" class=" row mt-4 container justify-content-center"></div>
+</div>
+<script>
+    let projects = [
+        {
+            "name": "Nemo Scrolling Game",
+            "desc": "A scrolling game where the user plays as Nemo and has to avoid sharks while eating planktons",
+            "tech": "HTML, CSS, and Javascript",
+            "repo": "https://github.com/dhyanpatel/IT202-Spring2021-project2",
+            "page": "https://aethen.me/IT202-Spring2021-project2/index.html",
+            "img": "images/nemoGame.png"
+        },
+        {
+            "name": "Chicago Land Inventory Catalog",
+            "desc": "A application which lets a user search the available Chicago-owned land inventory",
+            "tech": "Vue.js",
+            "repo": "https://github.com/dhyanpatel/IT202-Spring2021-project1",
+            "page": "http://aethen.me/IT202-Spring2021-project1/",
+            "img": "images/landSearch.png"
+        }
+    ]
+    window.onload = () => {
+        let projectCard = document.querySelector("#projectCards")
+        projects.forEach(repo => {
+            let card = `
+                    <div class="card m-3">
+                    <img class="card-img-top" src = ${repo.img} alt="cardImg">
+                    <div class="card-body">
+                    <h5 class="card-title">${repo.name}</h5>
+                    <p class = "card-text">${repo.desc}</p>
+                    <p class="card-text">Tech Used: ${repo.tech}</p>
+                    <a href=${repo.repo} class="btn btn-secondary">Go To Codebase</a>
+                    <a href=${repo.page} class="btn btn-secondary">Open Website</a>
+                    </div>
+                    </div>
+                `
+            projectCard.innerHTML += card
+        })
+    }
+
+</script>
 </body>
 </html>
